@@ -156,7 +156,7 @@ class ViewController: UIViewController  {
     
     //MARK: - алерт на повторяющеся имя
     func sameName() {
-        let sameNameAlert = UIAlertController(title: "Ошибка!", message: "Имя не должно повторяться", preferredStyle: .alert)
+        let sameNameAlert = UIAlertController(title: "Error!", message: "Имя не должно повторяться", preferredStyle: .alert)
         let okErrorAlert = UIAlertAction(title: "OK", style: .cancel)
         sameNameAlert.addAction(okErrorAlert)
         self.present(sameNameAlert, animated: true)
