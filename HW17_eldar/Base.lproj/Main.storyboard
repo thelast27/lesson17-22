@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="HW17_eldar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OGF-kY-1WI">
+                                <rect key="frame" x="0.0" y="115" width="414" height="698"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="3gv-8g-DZw"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="WRX-Ge-g7L"/>
+                                </connections>
+                            </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tN9-1o-cjx">
+                                <rect key="frame" x="0.0" y="156" width="414" height="706"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4qR-Je-mUt">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="eMS-fb-oaa"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="TCz-T5-W7y"/>
+                                </connections>
+                            </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AIO-zw-gMi">
+                                <rect key="frame" x="100" y="54" width="214" height="32"/>
+                                <segments>
+                                    <segment title="Sections"/>
+                                    <segment title="Collections"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="tgm-k3-Hh3"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AIO-zw-gMi" secondAttribute="trailing" constant="100" id="Axe-mW-vS9"/>
+                            <constraint firstItem="AIO-zw-gMi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Bcy-mv-Z9a"/>
+                            <constraint firstItem="OGF-kY-1WI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EZG-ov-860"/>
+                            <constraint firstItem="OGF-kY-1WI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="NKb-Xb-wKu"/>
+                            <constraint firstItem="OGF-kY-1WI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ahN-VZ-8C2"/>
+                            <constraint firstItem="OGF-kY-1WI" firstAttribute="top" secondItem="AIO-zw-gMi" secondAttribute="bottom" constant="30" id="h5L-OF-9g4"/>
+                            <constraint firstItem="OGF-kY-1WI" firstAttribute="top" secondItem="AIO-zw-gMi" secondAttribute="bottom" constant="30" id="jiJ-bz-r9q"/>
+                            <constraint firstItem="AIO-zw-gMi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="sQn-Xn-lWK"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="folderImageCollectionView" destination="tN9-1o-cjx" id="vFd-Nx-9gg"/>
+                        <outlet property="folderTableView" destination="OGF-kY-1WI" id="hRK-PN-B6O"/>
+                        <outlet property="segmentedControl" destination="AIO-zw-gMi" id="0Pt-F0-EzI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23.188405797101453" y="77.678571428571431"/>
+        </scene>
+        <!--Full Screen Image View Controller-->
+        <scene sceneID="4r1-l8-Tof">
+            <objects>
+                <viewController storyboardIdentifier="FullScreenImageViewController" id="tvf-Rb-Ox2" customClass="FullScreenImageViewController" customModule="HW17_eldar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KhD-Fl-BvT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B0j-dW-y7t">
+                                <rect key="frame" x="16" y="60" width="382" height="786"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wRb-9q-SqB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B0j-dW-y7t" firstAttribute="top" secondItem="wRb-9q-SqB" secondAttribute="top" constant="16" id="QZ7-qO-aki"/>
+                            <constraint firstItem="wRb-9q-SqB" firstAttribute="trailing" secondItem="B0j-dW-y7t" secondAttribute="trailing" constant="16" id="TJB-2T-9Wm"/>
+                            <constraint firstItem="B0j-dW-y7t" firstAttribute="leading" secondItem="wRb-9q-SqB" secondAttribute="leading" constant="16" id="UTq-Ly-xEp"/>
+                            <constraint firstItem="wRb-9q-SqB" firstAttribute="bottom" secondItem="B0j-dW-y7t" secondAttribute="bottom" constant="16" id="p7M-b8-PBD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fullScreenView" destination="B0j-dW-y7t" id="fzZ-EN-smn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U9o-WI-Ric" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="78"/>
+        </scene>
+        <!--New Folder View Controller-->
+        <scene sceneID="sKV-Qu-kUV">
+            <objects>
+                <viewController storyboardIdentifier="NewFolderViewController" id="lJv-cf-jp4" customClass="NewFolderViewController" customModule="HW17_eldar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x3X-ZV-2dg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="d6S-bF-fvP">
+                                <rect key="frame" x="0.0" y="39" width="414" height="818"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="9ua-Q6-cAa"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="EEl-bR-AIG"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IB9-Yt-X4V"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="newFolderTableView" destination="d6S-bF-fvP" id="Vn7-Z5-AoQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3BR-Ma-Xrt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1486" y="79"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
