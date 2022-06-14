@@ -10,6 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var passwordTextField = UITextField()
+    var passwordValue: String = ""
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -29,6 +31,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
+        if passwordValue != "" {
+            let errorAlert = UIAlertController(title: "Access denied", message: "Use your password below", preferredStyle: .alert)
+            errorAlert.addTextField() { textField in
+                self.passwordTextField = textField
+            }
+            let confirmPasswordErorAlert = UIAlertAction(title: "Confirm", style: .default) { _ in
+                if self.passwordTextField.text != self.passwordValue {
+                    let incorrectPasswordWorning = UIAlertController(title: "Passwword is incorrect", message: "Sorry, try again", preferredStyle: .alert)
+                    incorrectPasswordWorning.addTextField() { textField in
+                        self.passwordTextField  = textField
+                    }
+                    let incorrectPasswordWorningConfirmationAction = UIAlertAction(title: "Confirm", style: .default)
+                    incorrectPasswordWorning.addAction(incorrectPasswordWorningConfirmationAction)
+                    self.window?.rootViewController?.present(incorrectPasswordWorning, animated: true)
+                } else {
+                    let accessPermittedAlert = UIAlertController(title: "Congratulations!", message: "Access permitted", preferredStyle: .alert)
+                    self.window?.rootViewController?.present(accessPermittedAlert, animated: true)
+                    accessPermittedAlert.dismiss(animated: true)
+                }
+            }
+            errorAlert.addAction(confirmPasswordErorAlert)
+            self.window?.rootViewController?.present(errorAlert, animated: true)
+        }
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
@@ -36,6 +61,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        if passwordValue != "" {
+            let errorAlert = UIAlertController(title: "Access denied", message: "Use your password below", preferredStyle: .alert)
+            errorAlert.addTextField() { textField in
+                self.passwordTextField = textField
+            }
+            let confirmPasswordErorAlert = UIAlertAction(title: "Confirm", style: .default) { _ in
+                if self.passwordTextField.text != self.passwordValue {
+                    let incorrectPasswordWorning = UIAlertController(title: "Passwword is incorrect", message: "Sorry, try again", preferredStyle: .alert)
+                    incorrectPasswordWorning.addTextField() { textField in
+                        self.passwordTextField  = textField
+                    }
+                    let incorrectPasswordWorningConfirmationAction = UIAlertAction(title: "Confirm", style: .default)
+                    incorrectPasswordWorning.addAction(incorrectPasswordWorningConfirmationAction)
+                    self.window?.rootViewController?.present(incorrectPasswordWorning, animated: true)
+                } else {
+                    let accessPermittedAlert = UIAlertController(title: "Congratulations!", message: "Access permitted", preferredStyle: .alert)
+                    self.window?.rootViewController?.present(accessPermittedAlert, animated: true)
+                    accessPermittedAlert.dismiss(animated: true)
+                }
+            }
+            errorAlert.addAction(confirmPasswordErorAlert)
+            self.window?.rootViewController?.present(errorAlert, animated: true)
+        }
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }
@@ -46,8 +94,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
+        let passwordAlert = UIAlertController(title: "Set a password?", message: "Choose options", preferredStyle: .alert)
+        let setPassword  = UIAlertAction(title: "Create password", style: .default) { _ in
+            let passwordSetting = UIAlertController(title: "Set a password", message: "Create password using any characters", preferredStyle: .alert)
+            passwordSetting.addTextField() { textField in
+                self.passwordTextField = textField
+            }
+            let confirmSettingPassword = UIAlertAction(title: "Save", style: .default) { _ in
+                self.passwordValue = self.passwordTextField.text!
+            }
+            passwordSetting.addAction(confirmSettingPassword)
+            self.window?.rootViewController?.present(passwordSetting, animated: true)
+            if self.passwordValue != self.passwordTextField.text {
+                let errorAlert = UIAlertController(title: "Access denied", message: "Sorry, but password is incorrect", preferredStyle: .actionSheet)
+                self.window?.rootViewController?.present(errorAlert, animated: true)
+            }
+        }
+        let cancelAlert = UIAlertAction(title: "Dismiss", style: .default)
+        passwordAlert.addAction(setPassword)
+        passwordAlert.addAction(cancelAlert)
+        window?.rootViewController?.present(passwordAlert, animated: true)
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
